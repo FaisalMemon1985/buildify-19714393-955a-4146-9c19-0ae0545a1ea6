@@ -310,7 +310,7 @@ export const GameTable: React.FC = () => {
               isCurrentTurn={state.currentTurn === Position.North}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
-              isRevealed={state.revealedHand && state.bidder === Position.South}
+              isRevealed={state.revealedHand && getPartner(state.bidder!) === Position.North}
             />
             
             <PlayerHand
@@ -319,6 +319,7 @@ export const GameTable: React.FC = () => {
               isCurrentTurn={state.currentTurn === Position.East}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
+              isRevealed={state.revealedHand && getPartner(state.bidder!) === Position.East}
             />
             
             <PlayerHand
@@ -328,6 +329,7 @@ export const GameTable: React.FC = () => {
               isCurrentTurn={state.currentTurn === Position.South}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
+              isRevealed={true}
             />
             
             <PlayerHand
@@ -336,6 +338,7 @@ export const GameTable: React.FC = () => {
               isCurrentTurn={state.currentTurn === Position.West}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
+              isRevealed={state.revealedHand && getPartner(state.bidder!) === Position.West}
             />
           </>
         )}

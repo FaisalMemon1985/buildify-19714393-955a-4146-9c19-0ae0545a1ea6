@@ -63,7 +63,7 @@ export const Card: React.FC<CardProps> = ({
       >
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="w-12 h-20 rounded border-2 border-white/30 bg-gradient-to-br from-red-700 to-red-900 flex items-center justify-center">
-            <div className="text-white font-bold text-2xl">چوباز</div>
+            <div className="text-white font-bold text-lg sindhi-font">چوباز</div>
           </div>
         </div>
       </div>
@@ -81,25 +81,25 @@ export const Card: React.FC<CardProps> = ({
         ${inTrick ? `absolute ${getCardPosition()} transform ${getCardTransform()}` : ''}
       `}
     >
-      <div className={`absolute top-1 left-1 font-bold text-lg ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute top-1 left-1 font-bold text-sm ${isRed ? 'text-red-600' : 'text-black'}`}>
         {CardValueSymbol[card.value]}
       </div>
       
-      <div className={`absolute top-5 left-1 text-xl ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute top-4 left-1 text-lg ${isRed ? 'text-red-600' : 'text-black'}`}>
         {SuitSymbol[card.suit]}
       </div>
       
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className={`text-4xl ${isRed ? 'text-red-600' : 'text-black'}`}>
+        <div className={`text-3xl ${isRed ? 'text-red-600' : 'text-black'}`}>
           {SuitSymbol[card.suit]}
         </div>
       </div>
       
-      <div className={`absolute bottom-5 right-1 text-xl ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute bottom-4 right-1 text-lg transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
         {SuitSymbol[card.suit]}
       </div>
       
-      <div className={`absolute bottom-1 right-1 font-bold text-lg ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute bottom-1 right-1 font-bold text-sm transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
         {CardValueSymbol[card.value]}
       </div>
     </div>

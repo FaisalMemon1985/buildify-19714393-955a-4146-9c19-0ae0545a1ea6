@@ -21,7 +21,7 @@ export const PlayerHand: React.FC<PlayerHandProps> = ({
   isCurrentTurn,
   leadSuit,
   trumpSuit,
-  isRevealed = true
+  isRevealed = false
 }) => {
   const playableCards = isCurrentTurn 
     ? getPlayableCards(cards, leadSuit, trumpSuit)
@@ -55,6 +55,9 @@ export const PlayerHand: React.FC<PlayerHandProps> = ({
   
   const isVertical = position === Position.East || position === Position.West;
   
+  // Determine if cards should be revealed
+  const shouldRevealCards = position === Position.South || isRevealed;
+  
   return (
     <div className={`absolute ${getPositionClass()} flex ${isCurrentTurn ? 'z-10' : 'z-0'}`}>
       {cards.map((card, index) => (
@@ -71,7 +74,7 @@ export const PlayerHand: React.FC<PlayerHandProps> = ({
             card={card}
             onClick={() => onCardClick && isCurrentTurn && playableCards.some(c => c.id === card.id) && onCardClick(card)}
             isPlayable={isCurrentTurn && playableCards.some(c => c.id === card.id)}
-            isRevealed={isRevealed || position === Position.South}
+            isRevealed={shouldRevealCards}
             position={position.toLowerCase() as any}
           />
         </div>
