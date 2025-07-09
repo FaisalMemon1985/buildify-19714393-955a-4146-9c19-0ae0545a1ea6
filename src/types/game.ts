@@ -7,12 +7,12 @@ export enum Suit {
   Clubs = "clubs"
 }
 
-export enum SuitSymbol {
-  [Suit.Spades] = "♠",
-  [Suit.Hearts] = "♥",
-  [Suit.Diamonds] = "♦",
-  [Suit.Clubs] = "♣"
-}
+export const SuitSymbol: Record<Suit, string> = {
+  [Suit.Spades]: "♠",
+  [Suit.Hearts]: "♥", 
+  [Suit.Diamonds]: "♦",
+  [Suit.Clubs]: "♣"
+};
 
 export enum CardValue {
   Ace = 14,

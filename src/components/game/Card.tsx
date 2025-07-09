@@ -70,6 +70,19 @@ export const Card: React.FC<CardProps> = ({
     );
   }
   
+  // Get suit symbol with fallback
+  const getSuitSymbol = (suit: Suit) => {
+    switch (suit) {
+      case Suit.Spades: return '♠';
+      case Suit.Hearts: return '♥';
+      case Suit.Diamonds: return '♦';
+      case Suit.Clubs: return '♣';
+      default: return '?';
+    }
+  };
+  
+  const suitSymbol = getSuitSymbol(card.suit);
+  
   return (
     <div 
       onClick={isPlayable ? onClick : undefined}
@@ -81,25 +94,30 @@ export const Card: React.FC<CardProps> = ({
         ${inTrick ? `absolute ${getCardPosition()} transform ${getCardTransform()}` : ''}
       `}
     >
-      <div className={`absolute top-1 left-1 font-bold text-sm ${isRed ? 'text-red-600' : 'text-black'}`}>
+      {/* Top left value */}
+      <div className={`absolute top-1 left-1 font-bold text-xs leading-none ${isRed ? 'text-red-600' : 'text-black'}`}>
         {CardValueSymbol[card.value]}
       </div>
       
-      <div className={`absolute top-4 left-1 text-base ${isRed ? 'text-red-600' : 'text-black'}`}>
-        {SuitSymbol[card.suit]}
+      {/* Top left suit */}
+      <div className={`absolute top-3 left-1 text-sm leading-none ${isRed ? 'text-red-600' : 'text-black'}`}>
+        {suitSymbol}
       </div>
       
+      {/* Center suit symbol */}
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className={`text-4xl ${isRed ? 'text-red-600' : 'text-black'}`}>
-          {SuitSymbol[card.suit]}
+        <div className={`text-3xl font-bold ${isRed ? 'text-red-600' : 'text-black'}`}>
+          {suitSymbol}
         </div>
       </div>
       
-      <div className={`absolute bottom-4 right-1 text-base transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
-        {SuitSymbol[card.suit]}
+      {/* Bottom right suit (rotated) */}
+      <div className={`absolute bottom-3 right-1 text-sm leading-none transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
+        {suitSymbol}
       </div>
       
-      <div className={`absolute bottom-1 right-1 font-bold text-sm transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
+      {/* Bottom right value (rotated) */}
+      <div className={`absolute bottom-1 right-1 font-bold text-xs leading-none transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
         {CardValueSymbol[card.value]}
       </div>
     </div>
