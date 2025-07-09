@@ -85,17 +85,17 @@ export const Card: React.FC<CardProps> = ({
         {CardValueSymbol[card.value]}
       </div>
       
-      <div className={`absolute top-4 left-1 text-lg ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute top-4 left-1 text-base ${isRed ? 'text-red-600' : 'text-black'}`}>
         {SuitSymbol[card.suit]}
       </div>
       
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className={`text-3xl ${isRed ? 'text-red-600' : 'text-black'}`}>
+        <div className={`text-4xl ${isRed ? 'text-red-600' : 'text-black'}`}>
           {SuitSymbol[card.suit]}
         </div>
       </div>
       
-      <div className={`absolute bottom-4 right-1 text-lg transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
+      <div className={`absolute bottom-4 right-1 text-base transform rotate-180 ${isRed ? 'text-red-600' : 'text-black'}`}>
         {SuitSymbol[card.suit]}
       </div>
       

@@ -8,10 +8,10 @@ export enum Suit {
 }
 
 export enum SuitSymbol {
-  Spades = "♠",
-  Hearts = "♥",
-  Diamonds = "♦",
-  Clubs = "♣"
+  [Suit.Spades] = "♠",
+  [Suit.Hearts] = "♥",
+  [Suit.Diamonds] = "♦",
+  [Suit.Clubs] = "♣"
 }
 
 export enum CardValue {
