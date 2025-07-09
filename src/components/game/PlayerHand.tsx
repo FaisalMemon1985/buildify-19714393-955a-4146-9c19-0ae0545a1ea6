@@ -64,7 +64,7 @@ export const PlayerHand: React.FC<PlayerHandProps> = ({
         <div 
           key={card.id}
           className={`
-            ${isVertical ? '-mb-20' : '-mr-10'} 
+            ${isVertical ? '-mb-16' : '-mr-8'} 
             ${isCurrentTurn && playableCards.some(c => c.id === card.id) ? 'hover:-translate-y-4 transition-transform' : ''}
             ${getCardRotation()}
           `}

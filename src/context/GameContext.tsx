@@ -561,7 +561,12 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
   
   // Effect to trigger bot actions
   useEffect(() => {
-    if (state.currentTurn !== Position.South && 
+    // Skip bot action if human controls this position
+    const humanControlsPosition = state.currentTurn === Position.South || 
+      (state.revealedHand && state.bidder === Position.South && 
+       state.currentTurn === getPartner(Position.South));
+    
+    if (!humanControlsPosition && 
         [GamePhase.Bidding, GamePhase.TrumpSelection, GamePhase.Playing].includes(state.phase)) {
       const timer = setTimeout(() => {
         botAction();
@@ -569,7 +574,7 @@ export const GameProvider: React.FC<GameProviderProps> = ({ children }) => {
       
       return () => clearTimeout(timer);
     }
-  }, [state.currentTurn, state.phase, state.animationInProgress]);
+  }, [state.currentTurn, state.phase, state.animationInProgress, state.revealedHand, state.bidder]);
   
   // Effect to automatically deal cards when game starts
   useEffect(() => {

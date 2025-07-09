@@ -30,7 +30,14 @@ export const GameTable: React.FC = () => {
   
   // Handle card play
   const handleCardPlay = (card: any) => {
-    playCard(Position.South, card);
+    // Check if it's the human player's turn or if they control their partner
+    if (state.currentTurn === Position.South) {
+      playCard(Position.South, card);
+    } else if (state.revealedHand && state.bidder === Position.South && 
+               state.currentTurn === getPartner(Position.South)) {
+      // Human controls their partner's cards when they are the bidder
+      playCard(state.currentTurn, card);
+    }
   };
   
   // Get current trick winner if all cards played
@@ -307,6 +314,7 @@ export const GameTable: React.FC = () => {
             <PlayerHand
               cards={state.hands[Position.North]}
               position={Position.North}
+              onCardClick={state.revealedHand && state.bidder === Position.South && state.currentTurn === Position.North ? handleCardPlay : undefined}
               isCurrentTurn={state.currentTurn === Position.North}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
@@ -316,6 +324,7 @@ export const GameTable: React.FC = () => {
             <PlayerHand
               cards={state.hands[Position.East]}
               position={Position.East}
+              onCardClick={state.revealedHand && state.bidder === Position.South && state.currentTurn === Position.East ? handleCardPlay : undefined}
               isCurrentTurn={state.currentTurn === Position.East}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}
@@ -335,6 +344,7 @@ export const GameTable: React.FC = () => {
             <PlayerHand
               cards={state.hands[Position.West]}
               position={Position.West}
+              onCardClick={state.revealedHand && state.bidder === Position.South && state.currentTurn === Position.West ? handleCardPlay : undefined}
               isCurrentTurn={state.currentTurn === Position.West}
               leadSuit={state.currentTrick.leadSuit}
               trumpSuit={state.trumpSuit}

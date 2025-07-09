@@ -39,10 +39,10 @@ export const Card: React.FC<CardProps> = ({
   const getCardPosition = () => {
     if (inTrick) {
       switch (position) {
-        case 'north': return 'top-[30%] left-1/2';
-        case 'east': return 'top-1/2 right-[30%]';
-        case 'south': return 'bottom-[30%] left-1/2';
-        case 'west': return 'top-1/2 left-[30%]';
+        case 'north': return 'top-[35%] left-1/2';
+        case 'east': return 'top-1/2 right-[35%]';
+        case 'south': return 'bottom-[35%] left-1/2';
+        case 'west': return 'top-1/2 left-[35%]';
       }
     }
     
