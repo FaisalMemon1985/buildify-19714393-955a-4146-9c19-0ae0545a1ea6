@@ -1,6 +1,6 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ErrorBoundary } from './components/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary';
 import Index from './pages/Index';
 import Game from './pages/Game';
 import NotFound from './pages/NotFound';
